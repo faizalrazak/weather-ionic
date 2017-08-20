@@ -8,4 +8,19 @@
 
 <ion-content padding>
 
+<ion-list *ngIf="forecast">
+  <ion-item *ngFor="let weather of forecast">
+
+    <ion-thumbnail item-start>
+      <img src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"/>
+    </ion-thumbnail>
+
+    <h2>{{weather.weather[0].main}}</h2>
+    <p>{{weather.dt * 1000 | date:'medium'}}</p>
+
+    <button ion-button clear item-end (click)="detailTapped(weather)">View</button>
+
+  </ion-item>
+</ion-list>
+
 </ion-content>

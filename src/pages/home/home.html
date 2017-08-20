@@ -1,17 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <ion-item>
+    <ion-label floating>Enter Location</ion-label>
+    <ion-input type="loaction"></ion-input>
+  </ion-item>
+
+<div padding>
+  <button (click)= "buttonTapped()" ion-button full color="secondary">Get Weather</button>
+</div>
+  <ion-card *ngIf = "weather">
+  <img src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"/>
+  <ion-card-content >
+
+    <h1>{{weather.name}}</h1>
+    <h2>{{weather.weather[0].main}}</h2>
+    <p>Minimum temperature : {{weather.main.temp_min - 273 | number : '2.1-2'}} &#8451;</p>
+    <p>Maximum temperature : {{weather.main.temp_max - 273 | number : '2.1-2'}} &#8451;</p>
+  
+  </ion-card-content>
+</ion-card>
 </ion-content>
